@@ -1,0 +1,242 @@
+:root {
+  --primarybackground: #efe9e3;
+  --secondaryElement: #d2b48c;
+  --natural: #708238;
+  --typography: #3c2f2f;
+  --button-background: #c9b59c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Comic Neue", cursive;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  background-color: var(--primarybackground);
+}
+.nav-bar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 25px;
+}
+.nav-items {
+  width: 40%;
+}
+.nav-item {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+}
+.nav-item a {
+  color: var(--typography);
+  text-decoration: none;
+  font-size: large;
+  font-weight: 600;
+}
+.nav-item a:hover {
+  color: black;
+}
+.right-sidelogo button {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--button-background);
+  font-size: medium;
+  font-weight: bold;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#section-1 {
+  background: url(./assects/wmremove-transformed.mp4);
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+.container2 {
+  display: none;
+  flex-direction: column;
+  max-width: 420px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+h2 {
+  text-align: center;
+  font-size: large;
+}
+.container.show {
+  pointer-events: auto;
+  opacity: 1;
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.card form {
+  display: flex;
+  flex-direction: column;
+}
+form .input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+form .input:focus {
+  outline: none;
+  border-color: #4a73f0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.card button {
+  width: 100%;
+  padding: 14px;
+  background: var(--button-background);
+  color: var(--typography);
+  border: none;
+  font-weight: 800;
+  border-radius: 6px;
+  font-size: large;
+  cursor: pointer;
+}
+.container2 button {
+  width: 100%;
+  padding: 14px;
+  background: var(--button-background);
+  color: var(--typography);
+  border: none;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: large;
+  cursor: pointer;
+}
+button:hover {
+  background: #b69f83;
+}
+.login-text {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-text a {
+  color: #4a73f0;
+  text-decoration: none;
+  font-weight: 600;
+}
+.close,
+.ham {
+  display: none;
+}
+@media (max-width: 400px) {
+  .right-sidelogo button {
+    width: 100px;
+    height: 30px;
+  }
+  .nav-bar .logo {
+    width: 100px;
+    height: 70px;
+  }
+}
+@media (max-width: 660px) {
+  .nav-items {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    background-color: #aeaaaa;
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    width: 250px;
+    transition: right 0.5s ease;
+    z-index: 999;
+    box-shadow: -10px 0px 10px rgb(0, 0, 0, 0.1);
+    align-items: flex-start;
+  }
+
+  .nav-items.active {
+    right: 0;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    margin-top: 80px;
+    width: 100%;
+  }
+
+  .nav-item li {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-item li:hover {
+    background-color: #858181;
+  }
+
+  .nav-item a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ham {
+    display: block;
+    cursor: pointer;
+  }
+
+  .close {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 20px;
+  }
+}
