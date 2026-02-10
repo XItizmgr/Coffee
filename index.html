@@ -4,13 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee</title>
-    <link
-      rel="shortcut icon"
-      href="./assects/"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="./assects/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="login.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,14 +37,17 @@
         <button class="book-now">Book Now</button>
       </div>
     </nav>
-    <div class="Hero" id="section-1">
-      <!-- <video autoplay loop muted><source src="./assects/wmremove-transformed.mp4" type="video/mp4"></video> -->
+    <section class="Hero" id="section-1">
       <div class="container">
         <div class="card">
           <h2 class="title">Registration</h2>
-          <br>
+          <br />
           <form>
-            <input type="text" placeholder="Enter your display name" class="input" />
+            <input
+              type="text"
+              placeholder="Enter your display name"
+              class="input"
+            />
             <input type="email" placeholder="Enter your email" class="input" />
             <input
               type="password"
@@ -61,7 +59,7 @@
               placeholder="Confirm password"
               class="input"
             />
-            
+
             <label class="checkbox">
               <input type="checkbox" />
               <span>I accept all terms & conditions</span>
@@ -69,28 +67,28 @@
 
             <button type="submit">Register Now</button>
           </form>
-
-          <p class="login-text">
-            Already have an account?
-<button class="login">Login now</button>
-          </p>
+          <p class="login-text">Already have an account?</p>
+          <br />
+          <button type="button" class="login">Login now</button>
         </div>
-      </div>
-      <div class="container2">
-         <h2 class="title">Login Form</h2><br>
-        <form>
-            <input type="text " placeholder="Enter your email or User name " class="input" />
+        <div class="second-card">
+          <h2 class="title">Login Form</h2>
+          <br />
+          <form>
             <input
-              type="password"
-              placeholder="password"
+              type="text"
+              placeholder="Enter your email or User name "
               class="input"
             />
-             <button type="submit">Login now</button>
+            <input type="password" placeholder="password" class="input" />
+            <button type="submit" class="second-login">Login now</button>
+          </form>
+        </div>
       </div>
-    </div>
-    <div class="About" id="section-2"></div>
-    <div class="Menu" id="section-3"></div>
-    <div class="Review" id="section-4"></div>
+    </section>
+    <section class="About" id="section-2"></section>
+    <section class="Menu" id="section-3"></section>
+    <section class="Review" id="section-4"></section>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>

@@ -28,6 +28,7 @@ body {
   justify-content: space-between;
   height: 80px;
   padding: 0 25px;
+  z-index: 1000;
 }
 .nav-items {
   width: 40%;
@@ -61,54 +62,48 @@ body {
 }
 
 #section-1 {
-  background: url(./assects/wmremove-transformed.mp4);
   width: 100vw;
   height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  position: relative;
+  overflow: hidden;
 }
 .container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
+  display: none;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.7s ease;
 }
-.container2 {
+.hidden {
+  display: grid;
+  animation: fadein 1s forwards;
+}
+.card,
+.second-card {
+  grid-area: 1 / 1;
   display: none;
   flex-direction: column;
   max-width: 420px;
+  min-width: 350px;
   margin: auto;
   background: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-h2 {
-  text-align: center;
-  font-size: large;
-}
-.container.show {
-  pointer-events: auto;
-  opacity: 1;
+.show {
   display: flex;
+  animation: fadeIn 1s forwards;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  max-width: 420px;
-  margin: auto;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .card form {
   display: flex;
@@ -122,12 +117,10 @@ form .input {
   border: 1px solid #ccc;
   font-size: 14px;
 }
-
 form .input:focus {
   outline: none;
-  border-color: #4a73f0;
+  border-color: #0e3ecd;
 }
-
 .checkbox {
   display: flex;
   align-items: center;
@@ -145,31 +138,33 @@ form .input:focus {
   font-size: large;
   cursor: pointer;
 }
-.container2 button {
-  width: 100%;
-  padding: 14px;
-  background: var(--button-background);
-  color: var(--typography);
-  border: none;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: large;
+.second-login {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--button-background);
+  font-size: medium;
+  font-weight: bold;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  margin: auto;
 }
-button:hover {
-  background: #b69f83;
+h2 {
+  text-align: center;
+  font-size: large;
 }
 .login-text {
   margin-top: 20px;
   text-align: center;
   font-size: 14px;
 }
-
-.login-text a {
-  color: #4a73f0;
-  text-decoration: none;
-  font-weight: 600;
+button:hover {
+  background: #b69f83;
 }
+
 .close,
 .ham {
   display: none;
@@ -194,7 +189,7 @@ button:hover {
     height: 100vh;
     width: 250px;
     transition: right 0.5s ease;
-    z-index: 999;
+    z-index: 1000;
     box-shadow: -10px 0px 10px rgb(0, 0, 0, 0.1);
     align-items: flex-start;
   }
