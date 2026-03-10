@@ -14,6 +14,7 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+
 const openBtn = document.querySelector(".book-now");
 const container = document.querySelector(".container");
 const card1 = document.querySelector(".card");
@@ -38,4 +39,33 @@ container.addEventListener("click", (event) => {
 login.addEventListener("click", () => {
   card1.classList.remove("show");
   card2.classList.add("show");
+});
+
+
+
+// carousel code
+// const carousel = document.querySelector(".menu-carousel");
+// carousel.addEventListener("wheel", (e) => {
+//   e.preventDefault();
+//   carousel.scrollBy({
+//     left: e.deltaY,
+//     behavior: "smooth",
+//   });
+// });
+
+// footer year update
+const year = document.querySelector(".upto-date");
+const currentYear = new Date().getFullYear();
+year.textContent = `©${currentYear} Haven Roaster. All rights reserved.`;
+// navbar scroll effect
+const navbar = document.querySelector(".nav-bar");
+window.addEventListener("scroll", () => {
+ const scrollheight = window.scrollY
+ const navheight = navbar.getBoundingClientRect().height;
+ if(scrollheight > navheight){
+  navbar.classList.add("scrolled");
+ } else {
+  navbar.classList.remove("scrolled");
+ }
+ console.log(scrollheight,navheight);
 });

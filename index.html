@@ -14,81 +14,221 @@
     />
   </head>
   <body>
-    <nav class="nav-bar">
-      <img
-        src="./assects/logo-removebg-preview.png"
-        alt="coffee"
-        width="170px"
-        height="100px"
-        class="logo"
-      />
-      <div class="nav-items">
-        <img src="./assects/close.png" width="20px" class="close" />
-        <ul class="nav-item">
-          <li><a href="#section-1">Home</a></li>
-          <li><a href="#section-2">About</a></li>
-          <li><a href="#section-3">Menu</a></li>
-          <li><a href="#section-4">Review</a></li>
-        </ul>
-      </div>
-
-      <img src="./assects/more.png" width="20px" class="ham" />
-      <div class="right-sidelogo">
-        <button class="book-now">Book Now</button>
-      </div>
-    </nav>
-    <section class="Hero" id="section-1">
-      <div class="container">
-        <div class="card">
-          <h2 class="title">Registration</h2>
-          <br />
-          <form>
-            <input
-              type="text"
-              placeholder="Enter your display name"
-              class="input"
-            />
-            <input type="email" placeholder="Enter your email" class="input" />
-            <input
-              type="password"
-              placeholder="Create password"
-              class="input"
-            />
-            <input
-              type="password"
-              placeholder="Confirm password"
-              class="input"
-            />
-
-            <label class="checkbox">
-              <input type="checkbox" />
-              <span>I accept all terms & conditions</span>
-            </label>
-
-            <button type="submit">Register Now</button>
-          </form>
-          <p class="login-text">Already have an account?</p>
-          <br />
-          <button type="button" class="login">Login now</button>
+    <header>
+      <nav class="nav-bar">
+        <img
+          src="./assects/logo-removebg-preview.png"
+          alt="coffee"
+          width="160px"
+          height="100px"
+          class="logo"
+        />
+        <div class="nav-items">
+          <img src="./assects/close.png" width="20px" class="close" />
+          <ul class="nav-item">
+            <li><a href="#section-1">Home</a></li>
+            <li><a href="#section-2">About</a></li>
+            <li><a href="#section-3">Menu</a></li>
+            <li><a href="#section-4">Review</a></li>
+            <li><a href="#section-4">Review</a></li>
+          </ul>
         </div>
-        <div class="second-card">
-          <h2 class="title">Login Form</h2>
-          <br />
-          <form>
-            <input
-              type="text"
-              placeholder="Enter your email or User name "
-              class="input"
-            />
-            <input type="password" placeholder="password" class="input" />
-            <button type="submit" class="second-login">Login now</button>
-          </form>
+
+        <img src="./assects/more.png" width="20px" class="ham" />
+        <button class="book-now">Buy Now</button>
+      </nav>  
+    </header>
+    <main>
+      <section class="Hero" id="section-1">
+        <div class="section-1-main">
+          <div class="text">
+            <p class="hero-text">FIND YOUR HAVEN</p>
+            <p class="hero-text">IN EVERY SIP</p>
+            <span></span>
+          </div>
+          <img
+            class="image"
+            src="./assects/Gemini_Generated_Image_3v888x3v888x3v88-removebg-preview.png"
+            alt=""
+          />
         </div>
-      </div>
-    </section>
-    <section class="About" id="section-2"></section>
-    <section class="Menu" id="section-3"></section>
-    <section class="Review" id="section-4"></section>
+
+        <div class="container">
+          <div class="card">
+            <h2 class="title">Registration</h2>
+            <br />
+            <form>
+              <input
+                type="text"
+                placeholder="Enter your display name"
+                class="input"
+              />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="input"
+              />
+              <input
+                type="password"
+                placeholder="Create password"
+                class="input"
+              />
+              <input
+                type="password"
+                placeholder="Confirm password"
+                class="input"
+              />
+
+              <label class="checkbox">
+                <input type="checkbox" />
+                <span>I accept all terms & conditions</span>
+              </label>
+
+              <button type="submit">Register Now</button>
+            </form>
+            <p class="login-text">Already have an account?</p>
+            <br />
+            <button type="button" class="login">Login now</button>
+          </div>
+          <div class="second-card">
+            <h2 class="title">Login Form</h2>
+            <br />
+            <form>
+              <input
+                type="text"
+                placeholder="Enter your email or User name "
+                class="input"
+              />
+              <input type="password" placeholder="password" class="input" />
+              <button type="submit" class="second-login">Login now</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="About" id="section-2">
+        <div class="about-container"></div>
+      </section>
+      <section class="menu-section" id="section-3">
+        <header class="menu-header">
+          <h2>Our Signature Coffee</h2>
+          <p>
+            Crafted with precision, roasted with care, and brewed to perfection.
+            Experience coffee the premium way.
+          </p>
+        </header>
+        <div class="menu-carousel">
+          <div class="menu-flex">
+            <article class="menu-card">
+              <img
+                src="./assects/classic_expresso.jpg"
+                alt=""
+                class="Menu-photo"
+              />
+              <div class="menu-info">
+                <h3>Classic Espresso</h3>
+                <p>
+                  A rich, concentrated coffee with a smooth crema, served in a
+                  ceramic cup.
+                </p>
+              </div>
+              <span class="price">Rs. 280</span>
+            </article>
+            <article class="menu-card">
+              <img src="./assects/match_lattte.jpg" alt="" class="Menu-photo" />
+              <div class="menu-info">
+                <h3>Matcha Latte</h3>
+                <p>
+                  Matcha is an imported specialty item, making it pricier than
+                  coffee.
+                </p>
+              </div>
+              <span class="price">Rs. 450</span>
+            </article>
+            <article class="menu-card">
+              <img src="./assects/iced_latte.jpg" alt="" class="Menu-photo" />
+              <div class="menu-info">
+                <h3>Iced Latte</h3>
+                <p>Cold drinks usually carry a slight premium over hot ones.</p>
+              </div>
+              <span class="price">Rs. 400</span>
+            </article>
+            <article class="menu-card">
+              <img src="./assects/nitrro.png" alt="" class="Menu-photo" />
+              <div class="menu-info">
+                <h3>Nitro Cold Brew</h3>
+                <p>Rich, bold and perfectly balanced.</p>
+              </div>
+              <span class="price">Rs. 500</span>
+            </article>
+          </div>
+          <div aria-hidden="true" class="menu-flex">
+            <article class="menu-card">
+              <img
+                src="./assects/classic_expresso.jpg"
+                alt=""
+                class="Menu-photo"
+              />
+              <div class="menu-info">
+                <h3>Classic Espresso</h3>
+                <p>
+                  A rich, concentrated coffee with a smooth crema, served in a
+                  ceramic cup.
+                </p>
+              </div>
+              <span class="price">Rs. 280</span>
+            </article>
+            <article class="menu-card">
+              <img src="./assects/match_lattte.jpg" alt="" class="Menu-photo" />
+              <div class="menu-info">
+                <h3>Matcha Latte</h3>
+                <p>
+                  Matcha is an imported specialty item, making it pricier than
+                  coffee.
+                </p>
+              </div>
+              <span class="price">Rs. 450</span>
+            </article>
+            <article class="menu-card">
+              <img src="./assects/iced_latte.jpg" alt="" class="Menu-photo" />
+              <div class="menu-info">
+                <h3>Iced Latte</h3>
+                <p>Cold drinks usually carry a slight premium over hot ones.</p>
+              </div>
+              <span class="price">Rs. 400</span>
+            </article>
+            <article class="menu-card">
+              <img src="./assects/nitrro.png" alt="" class="Menu-photo" />
+              <div class="menu-info">
+                <h3>Nitro Cold Brew</h3>
+                <p>Rich, bold and perfectly balanced.</p>
+              </div>
+              <span class="price">Rs. 500</span>
+            </article>
+          </div>
+        </div>
+        <div class="menu-more-section">
+          <button type="button">
+            <a href="./menu.html" target="_blank">Shop more</a>
+          </button>
+        </div>
+      </section>
+
+      <section class="Review" id="section-4"></section>
+    </main>
+    <div class="scroll-to-top">
+      <img src="./assects/arrow.png" alt="Scroll to top" />
+    <footer>
+      <p class="upto-date"></p>
+    </footer>
+    <!-- <div class="modal-root">  
+        <div class="profile">
+          <img src="./assects/user.png" alt="User_profile_picture" class="user_profile">
+          <p class="User_id">Kshitiz Budha Magar</p>
+
+        </div>
+
+    </div> -->
+
     <script src="script.js"></script>
   </body>
 </html>
