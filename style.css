@@ -145,7 +145,7 @@ section {
 }
 .image {
   filter: drop-shadow(-4rem 0.8rem 0.7rem rgba(0, 0, 0, 0.5));
-  width: 440px;
+  width: 420px;
   max-width: 800px;
   height: auto;
   position: absolute;
@@ -180,7 +180,7 @@ section {
 @keyframes imagefadein {
   from {
     opacity: 0;
-    transform: translatex(50px);
+    transform: translatex(20px);
   }
   to {
     opacity: 1;
