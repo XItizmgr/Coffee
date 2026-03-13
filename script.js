@@ -53,7 +53,7 @@ login.addEventListener("click", () => {
 // footer year update
 const year = document.querySelector(".upto-date");
 const currentYear = new Date().getFullYear();
-year.textContent = `©${currentYear} Haven Roaster. All rights reserved to Haven Roaster.`;
+year.textContent = `©${currentYear} Haven Roaster.`;
 // navbar scroll effect
 const navbar = document.querySelector(".nav-bar");
 const scrolltop = document.querySelector(".scroll-to-top");
@@ -92,4 +92,33 @@ menucard.addEventListener("click", (event) => {
 order.addEventListener("click", () => {
   card1.classList.add("show");
   container.classList.add("hidden");
+});
+
+// login from localData
+
+const RegisterBtn = document.querySelector(".Register");
+const checkbox = document.querySelector(".Checking");
+const InputValue = document.querySelectorAll(".input");
+checkbox.addEventListener("change", (e) => {
+  console.log(e.target.checked);
+});
+
+RegisterBtn.addEventListener("click", (e) => {
+  let data = {};
+  e.preventDefault();
+  const InputValuecheck = [...InputValue].every(
+    (input) => input.value.trim() !== "",
+  );
+  if (!InputValuecheck) {
+    alert("Fill all fields");
+    return;
+  }
+  InputValue.forEach((input) => {
+    data[input.id] = input.value.trim();
+  });
+  if (data.password !== data["confirm-password"] || !checkbox.checked) {
+    alert("Password not match or checkbox not checked");
+    return;
+  }
+  console.log(data);
 });
