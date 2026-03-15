@@ -1,7 +1,27 @@
+const ContactForm = document.querySelector("#contact-form");
+const ContactBtn = document.querySelector(".btn-submit");
+const ContactResult = document.querySelector("#contact-result");
 const ham = document.querySelector(".ham");
 const closeBtn = document.querySelector(".close");
 const navItems = document.querySelector(".nav-items");
 const body = document.querySelector("body");
+const openBtn = document.querySelector(".book-now");
+const container = document.querySelector(".container");
+const card1 = document.querySelector(".card");
+const login = document.querySelector(".login");
+const card2 = document.querySelector(".second-card");
+const form = document.querySelector(".register-form");
+const year = document.querySelector(".upto-date");
+const currentYear = new Date().getFullYear();
+const navbar = document.querySelector(".nav-bar");
+const scrolltop = document.querySelector(".scroll-to-top");
+const order = document.querySelector(".shop-now");
+const menuContainers = document.querySelectorAll(".menu-flex");
+const section = document.querySelectorAll("section");
+const nav_link = document.querySelectorAll(".nav-link");
+const RegisterBtn = document.querySelector(".Register");
+const checkbox = document.querySelector(".Checking");
+const InputValue = document.querySelectorAll(".input");
 
 ham.addEventListener("click", () => {
   navItems.classList.add("active");
@@ -15,11 +35,6 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-const openBtn = document.querySelector(".book-now");
-const container = document.querySelector(".container");
-const card1 = document.querySelector(".card");
-const login = document.querySelector(".login");
-const card2 = document.querySelector(".second-card");
 openBtn.addEventListener("click", () => {
   container.classList.add("hidden");
   card1.classList.add("show");
@@ -28,12 +43,14 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     container.classList.remove("hidden");
     card2.classList.remove("show");
+    form.reset();
   }
 });
 container.addEventListener("click", (event) => {
   if (event.target === container) {
     container.classList.remove("hidden");
     card2.classList.remove("show");
+    form.reset();
   }
 });
 login.addEventListener("click", () => {
@@ -52,12 +69,9 @@ login.addEventListener("click", () => {
 // });
 
 // footer year update
-const year = document.querySelector(".upto-date");
-const currentYear = new Date().getFullYear();
-year.textContent = `©${currentYear} Haven Roaster.`;
+year.textContent = `©${currentYear} Haven Roaster`;
 // navbar scroll effect
-const navbar = document.querySelector(".nav-bar");
-const scrolltop = document.querySelector(".scroll-to-top");
+
 window.addEventListener("scroll", () => {
   const scrollheight = window.scrollY;
   const navheight = navbar.getBoundingClientRect().height;
@@ -79,8 +93,6 @@ scrolltop.addEventListener("click", () => {
   });
 });
 
-const order = document.querySelector(".shop-now");
-const menuContainers = document.querySelectorAll(".menu-flex");
 menuContainers.forEach((event) => {
   event.addEventListener("click", (event) => {
     const card = event.target.closest(".menu-card");
@@ -94,13 +106,26 @@ order.addEventListener("click", (e) => {
   card1.classList.add("show");
   container.classList.add("hidden");
 });
+
+// nav-active state
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      nav_link.forEach((link) => {
+        link.classList.toggle(
+          "nav-active",
+          link.getAttribute("href") === `#${id}`,
+        );
+      });
+    });
+  },
+  { threshold: 0.6 },
+);
+section.forEach((observe) => observer.observe(observe));
+
 // login from localData
-const RegisterBtn = document.querySelector(".Register");
-const checkbox = document.querySelector(".Checking");
-const InputValue = document.querySelectorAll(".input");
-checkbox.addEventListener("change", (e) => {
-  console.log(e.target.checked);
-});
 
 RegisterBtn.addEventListener("click", (e) => {
   let data = {};
@@ -119,5 +144,48 @@ RegisterBtn.addEventListener("click", (e) => {
     alert("Password not match or checkbox not checked");
     return;
   }
-  console.log(data);
+});
+
+// Contact form logic
+
+ContactForm.addEventListener("submit", async (e) => {
+  console.log("Form submission intercepted!");
+  e.preventDefault();
+  const formData = new FormData(ContactForm);
+  const ContactBtn = ContactForm.querySelector('button[type="submit"]');
+  const originalText = ContactBtn.innerHTML;
+  ContactBtn.disabled = true;
+  ContactBtn.innerHTML = "Sending...";
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      ContactResult.textContent = "Success! Message sent.";
+      ContactResult.style.color = "green";
+      ContactForm.reset();
+      setTimeout(() => {
+        ContactResult.textContent = "";
+        ContactResult.style.color = "";
+      }, 3000);
+    } else {
+      ContactResult.textContent = data.message || "Submission failed.";
+      ContactResult.style.color = "red";
+      setTimeout(() => {
+        ContactResult.textContent = "";
+        ContactResult.style.color = "";
+      }, 3000);
+    }
+  } catch (error) {
+    ContactResult.textContent = "Network error occurred.";
+    ContactResult.style.color = "red";
+  } finally {
+    ContactBtn.disabled = false;
+    ContactBtn.innerHTML = originalText;
+  }
 });
