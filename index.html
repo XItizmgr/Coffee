@@ -328,7 +328,7 @@
 
         <div class="carousel-dots">
           <span class="dot"></span>
-          <span class="dot active"></span>
+          <span class="dot"></span>
           <span class="dot"></span>
         </div>
 
@@ -341,8 +341,8 @@
               name="name"
               placeholder="Your Name"
               required
-            />
-            <input type="file" name="img"  class="form-input1"  required>
+            /><label for="file" class="form-input1" >Plz select an image</label>
+            <input type="file" name="img" id="file"  hidden required/>
             <textarea
               class="form-textarea"
               placeholder="Write your review here..."

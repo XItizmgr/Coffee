@@ -1,4 +1,3 @@
-
 const ContactForm = document.querySelector("#contact-form");
 const ContactBtn = document.querySelector(".btn-submit");
 const ContactResult = document.querySelector("#contact-result");
@@ -26,7 +25,7 @@ const InputValue = document.querySelectorAll(".input");
 const userProfilecontainer = document.querySelector(".user-profile ");
 const navProfile = document.querySelector(".nav-userprofile");
 year.textContent = `©${currentYear} Haven Roaster`;
-const user_container = document.querySelector("#user_profile_name")
+const user_container = document.querySelector("#user_profile_name");
 
 const ICONS = {
   success: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
@@ -38,11 +37,6 @@ const ICONS = {
   info: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`,
 };
 
-
-
-
-
-
 RegisterBtn.addEventListener("click", (e) => {
   let data = {};
   e.preventDefault();
@@ -50,22 +44,22 @@ RegisterBtn.addEventListener("click", (e) => {
     (input) => input.value.trim() !== "",
   );
   if (!InputValuecheck) {
-    alert("Fill all fields" ,"warning");
+    alert("Fill all fields", "warning");
     return;
   }
   InputValue.forEach((input) => {
     data[input.id] = input.value.trim();
   });
-  if (data.password !== data["confirm-password"] ) {
-    alert("Password not match","warning");
+  if (data.password !== data["confirm-password"]) {
+    alert("Password not match", "warning");
     return;
   }
-  if(!checkbox.checked){
-    alert("checkbox is not checked","warning")
-    return
+  if (!checkbox.checked) {
+    alert("checkbox is not checked", "warning");
+    return;
   }
 
-   openBtn.style.display = "none";
+  openBtn.style.display = "none";
   navProfile.style.display = "block";
   container.classList.remove("hidden");
   card2.classList.remove("show");
@@ -168,10 +162,6 @@ const observer = new IntersectionObserver(
 );
 section.forEach((observe) => observer.observe(observe));
 
-
-
-
-
 navProfile.addEventListener("click", (e) => {
   userProfilecontainer.classList.add("active");
 });
@@ -273,40 +263,55 @@ fileInput.addEventListener("change", (e) => {
     URL.revokeObjectURL(img.src);
   };
   img.src = URL.createObjectURL(file);
-    navProfile.src=URL.createObjectURL(file);
-
+  navProfile.src = URL.createObjectURL(file);
 });
-
 
 // to add review
 const Reviewform = document.querySelector(".review-form");
+ const label = document.querySelector(".form-input1")
+ const title = document.querySelector(".review-form-title")
 // const reviewsubmitBtn = document.querySelector("")
-Reviewform.addEventListener("submit",(e)=>{
-  e.preventDefault()
-  const reviewContainer = document.querySelector(".carousel-track")
+Reviewform.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const reviewContainer = document.querySelector(".carousel-track");
+  const carousel = document.querySelector(".carousel-dots");
   const reviewData = new FormData(Reviewform);
   const data = Object.fromEntries(reviewData);
   const article = document.createElement("article");
   const img = new Image();
-  const p1 = document.createElement("p")
-  const p2 = document.createElement("p")
-  article.className = "review-card"
-  img.className = "review-photo"
-  p1.className = "review-name"
-  p2.className = "review-comment"
-  
-const fileInput = Reviewform.querySelector(".form-input1");
-const file = fileInput.files[0];
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const span = document.createElement("span");
+  article.className = "review-card";
+  img.className = "review-photo";
+  p1.className = "review-name";
+  p2.className = "review-comment";
+  span.className = "dot";
 
-if (file) {
-  img.src = URL.createObjectURL(file); 
-} else {
-  img.src = "assects.profile_picture.jpg"; 
-}
-  p1.textContent = `${data.name}`
-  p2.textContent = `"${data.review}"`
-  article.append(img,p1,p2);
+  const fileInput = Reviewform.querySelector("#file");
+  const file = fileInput.files[0];
+
+  if (file) {
+    img.src = URL.createObjectURL(file);
+  } else {
+    img.src = "assects.profile_picture.jpg";
+  }
+  p1.textContent = `${data.name}`;
+  p2.textContent = `"${data.review}"`;
+  article.append(img, p1, p2);
   reviewContainer.appendChild(article);
+  carousel.appendChild(span);
+  label.textContent = `Plz select an image `
+  title.textContent =  ` Want to add another review 😎`
+   alert("your review is successfully submited 🫡" ,"success");
   Reviewform.reset();
+});
 
+const chooseeFile = document.querySelector("#file");
+chooseeFile.addEventListener("change",(e)=>{
+   const file = chooseeFile.files[0];
+   if(!file)return label.textContent = `choosee a fking file` ;
+ 
+  label.textContent = `Image is chosen🫡`
+  alert("image is successfully chosen🫡","success");
 })
