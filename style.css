@@ -187,6 +187,7 @@ section {
     height: 50rem;
     animation: imagefadein 1s ease-out forwards;
   }
+
   @keyframes imagefadein {
     from {
       opacity: 0;
@@ -237,6 +238,7 @@ section {
   height: 350px;
   object-fit: cover;
   border-radius: 50%;
+  pointer-events: none;
 }
 .about-content {
   max-width: 500px;
@@ -440,6 +442,9 @@ button:hover {
   .nav-bar .logo {
     width: 10rem;
     height: 7rem;
+  }
+  .text {
+    margin-top: 2rem;
   }
 }
 
@@ -679,7 +684,7 @@ footer .social-media {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: clamp(1.2rem,2vh,2rem);
+  gap: clamp(1.2rem, 2vh, 2rem);
   margin-top: 1rem;
 }
 .social-tag {
@@ -695,10 +700,10 @@ footer .social-media {
   transition: background-color 0.3s ease;
 }
 .social-tag svg {
-margin-bottom: 10px;
   width: 25px;
   height: 25px;
 }
+
 .social-tag svg {
   fill: var(--primarybackground);
 }
@@ -759,7 +764,7 @@ margin-bottom: 10px;
 }
 
 .review-card {
-  flex-shrink: 0; 
+  flex-shrink: 0;
   background: #ffffff;
   border-radius: 18px;
   padding: 2.4rem 2rem 2.2rem;
@@ -926,11 +931,17 @@ margin-bottom: 10px;
   .form-row {
     flex-direction: column;
   }
-  .social-tag svg {
+  footer .social-tag svg {
     width: 20px;
     height: 20px;
 }
+footer p {
+    font-size: 1.5rem;
+    margin-bottom: -10px;
 }
+.social-tag {
+  padding: 0.7rem;}
+  }
 .contact {
   display: flex;
   flex-direction: column;
@@ -1132,9 +1143,11 @@ canvas {
 .user-profile button {
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  background-color: rgba(214, 45, 45, 0.842);
+  background-color: var(--button-background);
   border: none;
   cursor: pointer;
+  font-size: medium;
+  font-weight: bold;
   font-size: 1.5rem;
   transition: transform 0.3s ease;
 }

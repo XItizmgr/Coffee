@@ -26,6 +26,14 @@ const userProfilecontainer = document.querySelector(".user-profile ");
 const navProfile = document.querySelector(".nav-userprofile");
 year.textContent = `©${currentYear} Haven Roaster`;
 const user_container = document.querySelector("#user_profile_name");
+const Reviewform = document.querySelector(".review-form");
+const label = document.querySelector(".form-input1");
+const title = document.querySelector(".review-form-title");
+const canvas = document.getElementById("profileCanvas");
+const ctx = canvas.getContext("2d");
+const fileInput = document.getElementById("pic_change");
+const chooseeFile = document.querySelector("#file");
+const alertContainer = document.querySelector("#alert-container");
 
 const ICONS = {
   success: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
@@ -61,10 +69,10 @@ RegisterBtn.addEventListener("click", (e) => {
 
   openBtn.style.display = "none";
   navProfile.style.display = "block";
-  container.classList.remove("hidden");
-  card2.classList.remove("show");
+ ToRemoveRegister();
+ alert("Yayyyyyyyyyyyyy u did well😏","success")
+ form.reset
 });
-
 ham.addEventListener("click", () => {
   navItems.classList.add("active");
 });
@@ -78,27 +86,23 @@ window.addEventListener("keydown", (event) => {
   }
 });
 document.addEventListener("click", (e) => {
-  console.log(e.target);
   if (navItems.classList.contains("active") && !ham.contains(e.target)) {
     navItems.classList.remove("active");
   }
 });
 
 openBtn.addEventListener("click", () => {
-  container.classList.add("hidden");
-  card1.classList.add("show");
+  Toregister();
 });
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    container.classList.remove("hidden");
-    card2.classList.remove("show");
+    ToRemoveRegister()
     form.reset();
   }
 });
 container.addEventListener("click", (event) => {
   if (event.target === container) {
-    container.classList.remove("hidden");
-    card2.classList.remove("show");
+    ToRemoveRegister()
     form.reset();
   }
 });
@@ -106,6 +110,10 @@ login.addEventListener("click", () => {
   card1.classList.remove("show");
   card2.classList.add("show");
 });
+function ToRemoveRegister() {
+  container.classList.remove("hidden");
+  card2.classList.remove("show");
+}
 
 // navbar scroll effect
 
@@ -134,15 +142,20 @@ menuContainers.forEach((event) => {
   event.addEventListener("click", (event) => {
     const card = event.target.closest(".menu-card");
     if (!card) return;
-    card1.classList.add("show");
-    container.classList.add("hidden");
+    if (navProfile.style.display === "block") return;
+    Toregister();
   });
 });
 order.addEventListener("click", (e) => {
   e.preventDefault();
+  if (navProfile.style.display === "block") return;
+  Toregister();
+});
+
+function Toregister() {
   card1.classList.add("show");
   container.classList.add("hidden");
-});
+}
 
 // nav-active state
 const observer = new IntersectionObserver(
@@ -220,7 +233,7 @@ ContactForm.addEventListener("submit", async (e) => {
   }
 });
 
-const alertContainer = document.querySelector("#alert-container");
+// createing a simple toast 
 function alert(message, type = "error", duration = 4000) {
   const div = document.createElement("div");
   div.className = `alert-toast ${type}`;
@@ -241,9 +254,8 @@ function alert(message, type = "error", duration = 4000) {
   }, duration);
 }
 
-const canvas = document.getElementById("profileCanvas");
-const ctx = canvas.getContext("2d");
-const fileInput = document.getElementById("pic_change");
+// Changing the profile_picture
+
 const defaultImg = new Image();
 defaultImg.onload = () => {
   canvas.width = 150;
@@ -266,11 +278,8 @@ fileInput.addEventListener("change", (e) => {
   navProfile.src = URL.createObjectURL(file);
 });
 
-// to add review
-const Reviewform = document.querySelector(".review-form");
- const label = document.querySelector(".form-input1")
- const title = document.querySelector(".review-form-title")
-// const reviewsubmitBtn = document.querySelector("")
+// Adding review 
+
 Reviewform.addEventListener("submit", (e) => {
   e.preventDefault();
   const reviewContainer = document.querySelector(".carousel-track");
@@ -294,24 +303,24 @@ Reviewform.addEventListener("submit", (e) => {
   if (file) {
     img.src = URL.createObjectURL(file);
   } else {
-    img.src = "assects.profile_picture.jpg";
+    img.src = "assects/profile_picture.jpg";
   }
   p1.textContent = `${data.name}`;
   p2.textContent = `"${data.review}"`;
   article.append(img, p1, p2);
   reviewContainer.appendChild(article);
   carousel.appendChild(span);
-  label.textContent = `Plz select an image `
-  title.textContent =  ` Want to add another review 😎`
-   alert("your review is successfully submited 🫡" ,"success");
+  label.textContent = `Plz select an image `;
+  title.textContent = ` Want to add another review 😎`;
+  alert("your review is successfully submited 🫡", "success");
   Reviewform.reset();
 });
+// For changing the design of label 
 
-const chooseeFile = document.querySelector("#file");
-chooseeFile.addEventListener("change",(e)=>{
-   const file = chooseeFile.files[0];
-   if(!file)return label.textContent = `choosee a fking file` ;
- 
-  label.textContent = `Image is chosen🫡`
-  alert("image is successfully chosen🫡","success");
-})
+chooseeFile.addEventListener("change", (e) => {
+  const file = chooseeFile.files[0];
+  if (!file) return (label.textContent = `choosee a fking file`);
+
+  label.textContent = `Image is chosen🫡`;
+  alert("image is successfully chosen🫡", "success");
+});
