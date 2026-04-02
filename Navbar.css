@@ -52,7 +52,8 @@
   color: black;
   transition: all 0.3s ease;
 }
-.nav-bar button {
+.nav-bar .book-now{
+  text-decoration: none;
   padding: 1.1rem 2rem;
   border-radius: 12px;
   color: var(--button-color);

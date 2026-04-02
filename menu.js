@@ -1,29 +1,28 @@
-
 const espressoBased = [
   {
     name: "Classic Espresso",
     description: "Strong, rich aromatic shot.",
     price: "Rs 420",
-    image: "assects/classic_expresso.jpg"
+    image: "assects/classic_expresso.jpg",
   },
   {
     name: "Americano",
     description: "Smooth espresso with water.",
     price: "Rs 400",
-    image: "assects/Americano.jpg"
+    image: "assects/Americano.jpg",
   },
   {
     name: "Cappuccino",
     description: "Balanced espresso creamy foam.",
     price: "Rs 300",
-    image: "assects/cappucchino.jpg"
+    image: "assects/cappucchino.jpg",
   },
   {
     name: "Caramel Latte",
     description: "Sweet caramel milk blend.",
     price: "Rs 300",
-    image: "assects/caramel_latte.jpg"
-  }
+    image: "assects/caramel_latte.jpg",
+  },
 ];
 
 const coldAndIced = [
@@ -31,26 +30,26 @@ const coldAndIced = [
     name: "Iced Mocha",
     description: "Chocolate espresso served chilled.",
     price: "Rs 620",
-    image: "assects/iced_latte.jpg"
+    image: "assects/iced_latte.jpg",
   },
   {
     name: "Cold Brew",
     description: "18-hour slow-steeped perfection.",
     price: "Rs 500",
-    image: "assects/nitrro.png"
+    image: "assects/nitrro.png",
   },
   {
     name: "Vanilla Iced Latte",
     description: "Espresso infused vanilla notes.",
     price: "Rs 400",
-    image: "assects/Iced_Vanilla_Almond_Milk_Latte_5_Minutes_-_Chasety.jpg"
+    image: "assects/Iced_Vanilla_Almond_Milk_Latte_5_Minutes_-_Chasety.jpg",
   },
   {
     name: "Hazelnut Frappe",
     description: "Blended creamy hazelnut delight.",
     price: "Rs 520",
-    image: "assects/Hazelnut_Latte.jpg"
-  }
+    image: "assects/Hazelnut_Latte.jpg",
+  },
 ];
 const smallTreats = [
   {
@@ -136,17 +135,16 @@ const cold = document.getElementById("cold-iced");
 const smallbites = document.getElementById("smallbites");
 const cakes = document.getElementById("cakes");
 const premium = document.getElementById("premium");
-espressoBased.forEach(item => TocreateMenuItems(item,espresso));
-coldAndIced.forEach(item => TocreateMenuItems(item, cold));
-smallTreats.forEach(item => TocreateMenuItems(item, smallbites));
-cakesAndLoaves.forEach(item => TocreateMenuItems(item, cakes));
-premiumSpecialties.forEach(item => TocreateMenuItems(item, premium));
+espressoBased.forEach((item) => TocreateMenuItems(item, espresso));
+coldAndIced.forEach((item) => TocreateMenuItems(item, cold));
+smallTreats.forEach((item) => TocreateMenuItems(item, smallbites));
+cakesAndLoaves.forEach((item) => TocreateMenuItems(item, cakes));
+premiumSpecialties.forEach((item) => TocreateMenuItems(item, premium));
 
-
-function TocreateMenuItems(item ,container) {
+function TocreateMenuItems(item, container) {
   const wrapper = document.createElement("div");
-  wrapper.className = "menu-wrapper"
-const card = document.createElement("article");
+  wrapper.className = "menu-wrapper";
+  const card = document.createElement("article");
   card.className = "menu-card";
   card.innerHTML = `
     <div class="menu-img-wrapper">
@@ -158,7 +156,6 @@ const card = document.createElement("article");
     </div>
     <span class="price">${item.price}</span>
   `;
-  wrapper.appendChild(card)
-   container.appendChild(wrapper);
-
+  wrapper.appendChild(card);
+  container.appendChild(wrapper);
 }

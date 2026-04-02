@@ -1,15 +1,8 @@
 const ContactForm = document.querySelector("#contact-form");
 const ContactBtn = document.querySelector(".btn-submit");
 const ContactResult = document.querySelector("#contact-result");
-const ham = document.querySelector(".ham");
-const closeBtn = document.querySelector(".close");
-const navItems = document.querySelector(".nav-items");
+const RegisterBtn = document.querySelector(".Register");
 const body = document.querySelector("body");
-const openBtn = document.querySelector(".book-now");
-const container = document.querySelector(".container");
-const card1 = document.querySelector(".card");
-const login = document.querySelector(".login");
-const card2 = document.querySelector(".second-card");
 const form = document.querySelector(".register-form");
 const year = document.querySelector(".upto-date");
 const currentYear = new Date().getFullYear();
@@ -19,11 +12,6 @@ const order = document.querySelector(".shop-now");
 const menuContainers = document.querySelectorAll(".menu-flex");
 const section = document.querySelectorAll("section");
 const nav_link = document.querySelectorAll(".nav-link");
-const RegisterBtn = document.querySelector(".Register");
-const checkbox = document.querySelector(".Checking");
-const InputValue = document.querySelectorAll(".input");
-const userProfilecontainer = document.querySelector(".user-profile ");
-const navProfile = document.querySelector(".nav-userprofile");
 year.textContent = `©${currentYear} Haven Roaster`;
 const user_container = document.querySelector("#user_profile_name");
 const Reviewform = document.querySelector(".review-form");
@@ -34,6 +22,18 @@ const ctx = canvas.getContext("2d");
 const fileInput = document.getElementById("pic_change");
 const chooseeFile = document.querySelector("#file");
 const alertContainer = document.querySelector("#alert-container");
+const ham = document.querySelector(".ham");
+const closeBtn = document.querySelector(".close");
+const navItems = document.querySelector(".nav-items");
+const openBtn = document.querySelector(".book-now");
+const container = document.querySelector(".container");
+const card1 = document.querySelector(".card");
+const login = document.querySelector(".login");
+const card2 = document.querySelector(".second-card");
+const checkbox = document.querySelector(".Checking");
+const InputValue = document.querySelectorAll(".input");
+const userProfilecontainer = document.querySelector(".user-profile ");
+const navProfile = document.querySelector(".nav-userprofile");
 
 const ICONS = {
   success: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
@@ -65,90 +65,6 @@ document.querySelector(".logout").addEventListener("click", (e) => {
 });
 
 const secondLogin = document.querySelector(".second-login");
-
-secondLogin.addEventListener("click", (e) => {
-  e.preventDefault();
-  const loginUserName = document.querySelector(".login-username").value.trim();
-  const loginpassword = document.querySelector(".login-password").value.trim();
-  const FindPerson = userData.find(
-    (user) =>
-      user["user-name"] === loginUserName && user.password === loginpassword,
-  );
-  if (FindPerson) {
-    localStorage.setItem("currentUser", JSON.stringify(FindPerson));
-    showProfile();
-    username.textContent = FindPerson["user-name"];
-    useremail.textContent = FindPerson.email;
-    ToRemoveRegister();
-    alert(`Welcome back ${FindPerson["user-name"]}!`, "success");
-  } else {
-    alert("Invalid username or password", "error");
-  }
-});
-
-RegisterBtn.addEventListener("click", (e) => {
-  let data = {};
-  e.preventDefault();
-  const InputValuecheck = [...InputValue].every(
-    (input) => input.value.trim() !== "",
-  );
-  if (!InputValuecheck) {
-    alert("Fill all fields", "warning");
-    return;
-  }
-  InputValue.forEach((input) => {
-    data[input.id] = input.value.trim();
-  });
-  if (data["user-name"].length < 4) {
-    alert("User name must contain atlest 4 letter ", "warning");
-    return;
-  }
-  const isDuplicate = userData.some((user) => user.email === data.email);
-  if (isDuplicate) {
-    alert("This email is already registered!", "warning");
-    return;
-  }
-
-  if (!data.email.includes("@")) {
-    alert("Please enter valid email", "warning");
-    return;
-  }
-
-  if (
-    !data.email.includes(".") ||
-    data.email.lastIndexOf(".") < data.email.indexOf("@")
-  ) {
-    alert("Please enter a valid domain (e.g., .com)", "warning");
-    return;
-  }
-  if (data.password.length < 4) {
-    alert("Password must be atlest 4 letter ");
-    return;
-  }
-  if (data.password !== data["confirm-password"]) {
-    alert("Password not match", "warning");
-    return;
-  }
-  if (!checkbox.checked) {
-    alert("checkbox is not checked", "warning");
-    return;
-  }
-
-  showProfile();
-  ToRemoveRegister();
-  alert("Yayyyyyyyyyyyyy u did well😏", "success");
-  form.reset();
-  userData.push(data);
-  if (username) username.textContent = data["user-name"];
-  if (useremail) useremail.textContent = data.email;
-  localStorage.setItem("allUsers", JSON.stringify(userData));
-  localStorage.setItem("currentUser", JSON.stringify(data));
-  console.log(userData);
-});
-function showProfile() {
-  openBtn.style.display = "none";
-  navProfile.style.display = "block";
-}
 ham.addEventListener("click", () => {
   navItems.classList.add("active");
 });
@@ -186,10 +102,98 @@ login.addEventListener("click", () => {
   card1.classList.remove("show");
   card2.classList.add("show");
 });
+navProfile.addEventListener("click", (e) => {
+  userProfilecontainer.classList.add("active");
+});
+document.addEventListener("click", (e) => {
+  if (userProfilecontainer.classList.contains("active") && !userProfilecontainer.contains(e.target) && !navProfile.contains(e.target)) {
+    userProfilecontainer.classList.remove("active");
+  }
+});
+function Toregister() {
+  card1.classList.add("show");
+  container.classList.add("hidden");
+}
 function ToRemoveRegister() {
   container.classList.remove("hidden");
   card1.classList.remove("show");
   card2.classList.remove("show");
+}
+
+secondLogin.addEventListener("click", (e) => {
+  e.preventDefault();
+  const loginUserName = document.querySelector(".login-username").value.trim();
+  const loginpassword = document.querySelector(".login-password").value.trim();
+  const FindPerson = userData.find((user) => user["user-name"] === loginUserName && user.password === loginpassword);
+  if (FindPerson) {
+    localStorage.setItem("currentUser", JSON.stringify(FindPerson));
+    showProfile();
+    username.textContent = FindPerson["user-name"];
+    useremail.textContent = FindPerson.email;
+    ToRemoveRegister();
+    alert(`Welcome back ${FindPerson["user-name"]}!`, "success");
+  } else {
+    alert("Invalid username or password", "error");
+  }
+});
+
+RegisterBtn.addEventListener("click", (e) => {
+  let data = {};
+  e.preventDefault();
+  const InputValuecheck = [...InputValue].every((input) => input.value.trim() !== "");
+  if (!InputValuecheck) {
+    alert("Fill all fields", "warning");
+    return;
+  }
+  InputValue.forEach((input) => {
+    data[input.id] = input.value.trim();
+  });
+  if (data["user-name"].length < 4) {
+    alert("User name must contain atlest 4 letter ", "warning");
+    return;
+  }
+  const isDuplicate = userData.some((user) => user.email === data.email);
+  if (isDuplicate) {
+    alert("This email is already registered!", "warning");
+    return;
+  }
+
+  if (!data.email.includes("@")) {
+    alert("Please enter valid email", "warning");
+    return;
+  }
+
+  if (!data.email.includes(".") || data.email.lastIndexOf(".") < data.email.indexOf("@")) {
+    alert("Please enter a valid domain (e.g., .com)", "warning");
+    return;
+  }
+  if (data.password.length < 4) {
+    alert("Password must be atlest 4 letter ");
+    return;
+  }
+  if (data.password !== data["confirm-password"]) {
+    alert("Password not match", "warning");
+    return;
+  }
+  if (!checkbox.checked) {
+    alert("checkbox is not checked", "warning");
+    return;
+  }
+
+  showProfile();
+  ToRemoveRegister();
+  alert("Yayyyyyyyyyyyyy u did well😏", "success");
+  form.reset();
+  userData.push(data);
+  if (username) username.textContent = data["user-name"];
+  if (useremail) useremail.textContent = data.email;
+  localStorage.setItem("allUsers", JSON.stringify(userData));
+  localStorage.setItem("currentUser", JSON.stringify(data));
+  console.log(userData);
+});
+function showProfile() {
+  openBtn.style.display = "none";
+  navProfile.style.display = "block";
 }
 
 // navbar scroll effect
@@ -229,11 +233,6 @@ order.addEventListener("click", (e) => {
   Toregister();
 });
 
-function Toregister() {
-  card1.classList.add("show");
-  container.classList.add("hidden");
-}
-
 // nav-active state
 const observer = new IntersectionObserver(
   (entries) => {
@@ -241,29 +240,14 @@ const observer = new IntersectionObserver(
       if (!entry.isIntersecting) return;
       const id = entry.target.id;
       nav_link.forEach((link) => {
-        link.classList.toggle(
-          "nav-active",
-          link.getAttribute("href") === `#${id}`,
-        );
+        link.classList.toggle("nav-active", link.getAttribute("href") === `#${id}`);
       });
     });
   },
   { threshold: 0.6 },
 );
-section.forEach((observe) => observer.observe(observe));
+section.forEach((obs) => observer.observe(obs));
 
-navProfile.addEventListener("click", (e) => {
-  userProfilecontainer.classList.add("active");
-});
-document.addEventListener("click", (e) => {
-  if (
-    userProfilecontainer.classList.contains("active") &&
-    !userProfilecontainer.contains(e.target) &&
-    !navProfile.contains(e.target)
-  ) {
-    userProfilecontainer.classList.remove("active");
-  }
-});
 //
 // Contact form logic
 

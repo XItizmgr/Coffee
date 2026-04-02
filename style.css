@@ -205,31 +205,7 @@ section {
 }
 
 /* mobile in about */
-@media (max-width: 768px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .about-image img {
-    width: 250px;
-    height: 250px;
-  }
-  .nav-item {
-    gap: 4rem;
-  }
-  .nav-item a {
-    font-size: medium;
-  }
-  .nav-bar button {
-    padding: 1rem 1.5rem;
-  }
-
-  .nav-bar .logo {
-    width: 10rem;
-    height: 7rem;
-  }
-}
 .container {
   display: none;
   position: fixed;
@@ -347,93 +323,6 @@ form .input:focus {
 button:hover {
   background: #b69f83;
 }
-
-.close,
-.ham {
-  display: none;
-}
-
-/* for mobile */
-
-@media (max-width: 426px) {
-  html {
-    font-size: 50%;
-  }
-  .card,
-  .second-card {
-    min-width: 32rem;
-  }
-
-  .right-sidelogo button {
-    width: 10rem;
-    height: 3rem;
-  }
-
-  .nav-bar .logo {
-    width: 10rem;
-    height: 7rem;
-  }
-  .text {
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 660px) {
-  .nav-items {
-    position: fixed;
-    top: 0;
-    right: -26rem;
-    background-color: #aeaaaa;
-    backdrop-filter: blur(1rem);
-    height: 100vh;
-    width: 25rem;
-    transition: right 0.5s ease;
-    z-index: 1000;
-    box-shadow: -1rem 0 1rem rgba(0, 0, 0, 0.1);
-    align-items: flex-start;
-  }
-
-  .nav-items.active {
-    right: 0;
-  }
-  .nav-item {
-    flex-direction: column;
-    margin-top: 8rem;
-    width: 100%;
-  }
-
-  .nav-item li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-item li:hover {
-    background-color: #858181;
-  }
-
-  .nav-item a {
-    display: flex;
-    width: 100%;
-    height: 5rem;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .ham {
-    display: block;
-    cursor: pointer;
-  }
-
-  .close {
-    display: block;
-    cursor: pointer;
-    position: absolute;
-    top: 2.5rem;
-    right: 2.5rem;
-    width: 2rem;
-  }
-}
-
 .menu-section {
   padding: 8rem clamp(2rem, 6vw, 6rem);
 }
@@ -887,9 +776,9 @@ footer p {
 }
 
 .contact-header h2 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: var(--typography);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .contact-header p {
