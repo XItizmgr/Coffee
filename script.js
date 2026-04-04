@@ -124,7 +124,7 @@ secondLogin.addEventListener("click", (e) => {
   e.preventDefault();
   const loginUserName = document.querySelector(".login-username").value.trim();
   const loginpassword = document.querySelector(".login-password").value.trim();
-  const FindPerson = userData.find((user) => user["user-name"] === loginUserName && user.password === loginpassword);
+  const FindPerson = userData.find((user) => user["user-name"] === loginUserName||user.email === loginUserName && user.password === loginpassword);
   if (FindPerson) {
     localStorage.setItem("currentUser", JSON.stringify(FindPerson));
     showProfile();
@@ -323,7 +323,7 @@ defaultImg.onload = () => {
   canvas.height = 150;
   ctx.drawImage(defaultImg, 0, 0, canvas.width, canvas.height);
 };
-defaultImg.src = "assects/profile_picture.jpg";
+defaultImg.src = "assects/default.jpg";
 fileInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
